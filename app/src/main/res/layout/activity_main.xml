@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculadora de IMC"
+        android:gravity="center"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf = "parent"/>
+
+    <TextView
+        android:id="@+id/tvAltura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Altura(metros)"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:labelFor="@id/etAltura"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"/>
+
+    <EditText
+        android:id="@+id/etAltura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf = "@id/tvAltura"/>
+
+    <TextView
+        android:id="@+id/tvPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Peso(Kilogramos)"
+        android:labelFor="@+id/etPeso"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/etAltura"/>
+
+    <EditText
+        android:id="@+id/etPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/tvPeso"/>
+
+    <Button
+        android:id="@+id/btCalcular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calcular"
+        android:textSize="20sp"
+        android:layout_margin="20sp"
+        app:layout_constraintTop_toBottomOf="@id/etPeso"/>
+
+    <LinearLayout
+        android:id="@+id/lyResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/btCalcular">
+
+        <ImageView
+            android:id="@+id/imgResultado"
+            android:layout_width="110dp"
+            android:layout_height="120dp"
+            android:layout_margin="20dp"/>
+
+        <TextView
+            android:id="@+id/tvResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"/>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
