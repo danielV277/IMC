@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">IMC</string>
+    <string name="tvInicio">Inicio de sesion</string>
+    <string name="tvUsuario">Usuario</string>
+    <string name="tvContraseña">Contraseña</string>
+    <string name="mnCon">Contraseña o usuario incorrectos</string>
+    <string name="btEntrar">Entrar</string>
+    <string name="vlCampos">Campos invalidos</string>
 </resources>

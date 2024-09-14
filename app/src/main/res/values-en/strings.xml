@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IMC</string>
+    <string name="tvInicio">Login</string>
+    <string name="tvUsuario">Username</string>
+    <string name="tvContraseña">Password</string>
+    <string name="mnCon">Incorrect password or username</string>
+    <string name="btEntrar">Open</string>
+    <string name="vlCampos">invalied fields</string>
+</resources>

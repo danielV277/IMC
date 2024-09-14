@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".Login">
+
+    <TextView
+        android:id="@+id/tvInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvInicio"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:fontFamily="sans-serif-smallcaps"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/tvUsuario"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/tvInicio"/>
+
+    <EditText
+        android:id="@+id/teUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvUsuario"/>
+
+    <TextView
+        android:id="@+id/tvContra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/tvContraseña"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/teUsuario"/>
+
+    <EditText
+        android:id="@+id/teContra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/tvContra"/>
+
+    <Button
+        android:id="@+id/btEntrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btEntrar"
+        android:layout_margin="30sp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/teContra"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
