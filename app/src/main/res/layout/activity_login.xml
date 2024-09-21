@@ -32,6 +32,8 @@
         android:id="@+id/teUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:hint="Usuario"
         app:layout_constraintTop_toBottomOf="@id/tvUsuario"/>
 
     <TextView
@@ -47,6 +49,8 @@
         android:id="@+id/teContra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:textSize="25sp"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/tvContra"/>
 
@@ -58,5 +62,14 @@
         android:layout_margin="30sp"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/teContra"/>
+
+    <Button
+        android:id="@+id/btRegistrase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrase"
+        android:layout_margin="30sp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/btEntrar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
