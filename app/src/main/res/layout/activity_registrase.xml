@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20sp"
     tools:context=".Registrase">
 
     <TextView
@@ -12,45 +13,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registrarse"
-        android:textSize="24sp"
-        android:textColor="#000"
-        android:textStyle="bold"
+        android:textSize="25sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"/>
+        android:layout_marginTop="30sp"/>
 
     <!-- Campo de Usuario -->
     <EditText
         android:id="@+id/editTextUsername"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        android:layout_margin="20sp"
         android:layout_height="wrap_content"
         android:hint="Usuario"
         android:inputType="text"
-        android:padding="12dp"
-        android:drawablePadding="10dp"
+        android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/registerTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Campo de Contraseña -->
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
+        android:layout_margin="20sp"
         android:inputType="textPassword"
-        android:padding="12dp"
-        android:drawablePadding="10dp"
+        android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/editTextUsername"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Botón de Registrarse -->
     <Button
@@ -58,15 +51,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Registrar"
-        android:textColor="#FFF"
-        android:backgroundTint="#6200EE"
-        android:padding="12dp"
-        android:textStyle="bold"
+        android:layout_margin="20sp"
+        android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@id/editTextPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

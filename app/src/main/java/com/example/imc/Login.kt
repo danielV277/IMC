@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat
 class Login : AppCompatActivity() {
 
     lateinit var coneccionDB: ConeccionDB
-    lateinit var encryptionUtil:EncryptionUtil
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,77 +23,57 @@ class Login : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
         coneccionDB = ConeccionDB(this)
+        //val secretKey = EncryptionUtil.generateKey()
 
 
+        coneccionDB.addUsuario("admin",EncryptionUtil.encrypt("1234",EncryptionUtil.secretKey))
 
-        //val credenciales = hashMapOf(
-        //    "admin" to "1234"
-        //)
-        //val secretKey = encryptionUtil.generateKey()
-        //coneccionDB.addUsuario("admin",encryptionUtil.encrypt("1234",secretKey))
+        //coneccionDB.addUsuario("admin", "1234")
 
-        coneccionDB.addUsuario("admin", "1234")
+        val bun = Bundle()
 
         val teUsuario = findViewById<EditText>(R.id.teUsuario)
         val teContra = findViewById<EditText>(R.id.teContra)
-
         val btEntrar = findViewById<Button>(R.id.btEntrar)
         val btRegistrase = findViewById<Button>(R.id.btRegistrase)
+
+        btRegistrase.setOnClickListener{
+            val intent = Intent(this,Registrase::class.java)
+            startActivity(intent)
+        }
 
         btEntrar.setOnClickListener{
             var usuario = teUsuario.text.toString().trim()
             var contra = teContra.text.toString().trim()
 
-
             if(usuario.isNotEmpty() && contra.isNotEmpty()){
-                val p0: SQLiteDatabase = coneccionDB.readableDatabase
-                val cursor = p0.rawQuery("select usuario, contrasena from usuarios",null)
 
+                val p0: SQLiteDatabase = coneccionDB.readableDatabase
+
+                val cursor = p0.rawQuery("select usuario, contrasena from usuarios",null)
                 if(cursor.moveToFirst()){
                     val credenciales = hashMapOf<String,String>()
                     do{
                         credenciales[cursor.getString(0).toString()] = cursor.getString(1).toString()
                     }while(cursor.moveToNext())
 
-                    if(credenciales[usuario] == contra){
-                        //credenciales[usuario] == EncryptionUtil.decrypt(contra,secretKey)
+                    if(credenciales[usuario] == EncryptionUtil.encrypt(contra,EncryptionUtil.secretKey).toString()){
+
                         val intent = Intent(this,MainActivity::class.java)
                         intent.putExtra("usuario",usuario)
                         startActivity(intent)
                         finish()
                     }else{
-                        Toast.makeText(this,getString(R.string.mnCon),Toast.LENGTH_LONG).show()
+                        CustomToast.show(this,getString(R.string.mnCon),R.drawable.alerta)
+                        //Toast.makeText(this,getString(R.string.mnCon),Toast.LENGTH_LONG).show()
                     }
                 }
             }else{
-                Toast.makeText(this,getString(R.string.vlCampos),Toast.LENGTH_LONG).show()
+                CustomToast.show(this,getString(R.string.vlCampos),R.drawable.alerta)
+                //Toast.makeText(this,getString(R.string.vlCampos),Toast.LENGTH_LONG).show()
             }
 
-            btRegistrase.setOnClickListener{
-                val intentReg = Intent(this,Registrase::class.java)
-                startActivity(intentReg)
-            }
-
-
-
-
-            /*if(usuario.isNotEmpty() && contra.isNotEmpty()){
-                if(credenciales[usuario] == contra){
-                    val intent = Intent(this,MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }else{
-                    Toast.makeText(this,getString(R.string.mnCon),Toast.LENGTH_LONG).show()
-                }
-            }else{
-                Toast.makeText(this,getString(R.string.vlCampos),Toast.LENGTH_LONG).show()
-            }*/
-
         }
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
     }
 }

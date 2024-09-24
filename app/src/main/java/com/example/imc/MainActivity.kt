@@ -29,14 +29,13 @@ class MainActivity : AppCompatActivity() {
         val imgResultado = findViewById<ImageView>(R.id.imgResultado)
         val tvResultado = findViewById<TextView>(R.id.tvResultado)
         val usuario = intent.getStringExtra("usuario")
-
+        val btListar = findViewById<Button>(R.id.btListar)
+        val btSalir = findViewById<Button>(R.id.btSalir)
         val currentDateTime = LocalDateTime.now()
-        // Definir el formato deseado
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-        // Formatear la fecha y hora
         val formattedDateTime = currentDateTime.format(formatter)
 
-        val btListar = findViewById<Button>(R.id.btListar)
+
 
         btCalcular.setOnClickListener{
             var alturaStr = etAltura.text.toString()
@@ -59,6 +58,9 @@ class MainActivity : AppCompatActivity() {
                 imgResultado.setImageResource(result.second)
                 if (usuario != null) {
                     coneccionDB.addRegistro(usuario, pesoStr,alturaStr,formattedDateTime)
+                    println("Usuario agradado"+usuario)
+                }else{
+                    println("Usuario no no agregado")
                 }
             }else{
                 tvResultado.text = "Datos no validos"
@@ -67,7 +69,14 @@ class MainActivity : AppCompatActivity() {
 
         btListar.setOnClickListener{
             val intentRegistroiIMC = Intent(this,RegistroIMC::class.java)
+            intentRegistroiIMC.putExtra("usuario",usuario)
             startActivity(intentRegistroiIMC)
+            finish()
+        }
+
+        btSalir.setOnClickListener{
+            val intentLogin = Intent(this,Login::class.java)
+            startActivity(intentLogin)
             finish()
         }
     }
